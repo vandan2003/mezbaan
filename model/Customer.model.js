@@ -20,6 +20,10 @@ const Customer = sequelize.define("customer",{
     password:{
         type:DataTypes.STRING,
         allowNull:false
+    },
+    status:{
+        type:DataTypes.STRING,
+        defaultValue:"active"
     }
 },
 {
