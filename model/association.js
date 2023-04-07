@@ -10,6 +10,7 @@ import Facility from "./Facility.model.js";
 import Image from "./image.model.js";
 import Cuisine from "./cuisine.model.js";
 import Plan from "./plan.model.js";
+import Rating from "./rating.model.js";
 
 Customer.hasMany(Review,{
     foreignKey:'customerId'
@@ -111,4 +112,20 @@ Cuisine.belongsTo(Restaurant,{
     foreignKey:'restaurantId' , targetKey:'id'
 });
 
-export {Restaurant,Review,Customer,Favourite,Booking,Plan,Subscription,Menu,Facility,Cuisine,Image};
+Restaurant.hasMany(Rating,{
+    foreignKey:"restaurantId"
+})
+
+Rating.belongsTo(Restaurant,{
+    foreignKey:"restaurantId",targetKey:"id"
+})
+
+Customer.hasMany(Rating,{
+    foreignKey:"customerId"
+})
+
+Rating.belongsTo(Customer,{
+    foreignKey:"customerId",targetKey:"id"
+})
+
+export {Restaurant,Review,Customer,Favourite,Booking,Plan,Subscription,Menu,Facility,Cuisine,Image,Rating};
