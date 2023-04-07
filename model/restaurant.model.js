@@ -5,7 +5,7 @@ import sequelize from "./dgconfig.js";
 const Restaurant = sequelize.define("restaurant",{
     name:{
         type:DataTypes.STRING,
-        allowNull:false,
+    allowNull:false,
         unique:true
     },
     description:{
@@ -70,6 +70,10 @@ const Restaurant = sequelize.define("restaurant",{
         type:DataTypes.STRING,
         allowNull:false,
         unique:true
+    },
+    status:{
+        type:DataTypes.STRING,
+        defaultValue:"Pending"
     }
 },{
     timestamps:false
