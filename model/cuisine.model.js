@@ -22,5 +22,5 @@ sequelize.sync()
 .catch(err=>{
     console.log(err);
 })
-
+//----------------------------
 export default Cuisine;
