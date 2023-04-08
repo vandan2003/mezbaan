@@ -321,8 +321,7 @@ export const changePassword = async (request,response)=>{
 
         if(!restaurant)
             return response.status(404).json({status:false,res:"Restaurant not found"});
-        request.body.newPassword = await bcrypt.hash(request.body.newPassword,await bcrypt.genSalt(10));
-        await Restaurant.update({password:request.body.newPassword},{
+        await Restaurant.update({password: await bcrypt.hash(request.body.newPassword,await bcrypt.genSalt(10))},{
             where:{
                 id:restaurant.id
             }

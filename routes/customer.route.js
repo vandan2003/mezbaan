@@ -1,5 +1,5 @@
 import express from "express";
-import { signup ,signin ,getCustomer, update , block, changePassword,addToFavourite,romoveFavourite} from "../contollers/customer.controller.js";
+import { signup ,signin ,getCustomer, update , block, changePassword,addToFavourite,removeFavourite} from "../contollers/customer.controller.js";
 import { body } from "express-validator";
 import { verifyToken } from "../middleware/tokenVerification.js";
 
@@ -17,8 +17,8 @@ router.get("/profile/:id",verifyToken,getCustomer);
 router.post("/edit",verifyToken,update);
 router.get("/block/:id",verifyToken,block);
 router.post("/changepassword",verifyToken,changePassword);
-router.get("/add-to-favourite/:resId",addToFavourite);//crection
-router.get("/remove-favourite/:resId",romoveFavourite);//crection
+router.get("/add-to-favourite/:resId/:cusId",addToFavourite);//crection
+router.get("/remove-favourite/:resId/:cusId",removeFavourite);//crection
 
 
 export default router;
