@@ -18,6 +18,7 @@ export const signup = async (request, response, next) => {
         return response.status(200).json({ customer: customer, status: true });
     }
     catch (err) {
+        console.log(err)
         return response.status(500).json({ error: "Internal Server Error", status: false });
     }
 }
@@ -121,20 +122,20 @@ export const addToFavourite = async (request,response,next)=>{
     let record= await Favourite.findOne({raw:true,
         where:{
             restaurantId:request.params.resId,
-            customerId:3
+            customerId:request.params.cusId
         }
     })
     if(record)
         return response.status(200).json({ message: "alredy added",status: true });
-    let favourite =await Favourite.create({restaurantId :request.params.resId,customerId:3});
+    let favourite =await Favourite.create({restaurantId :request.params.resId,customerId:request.params.cusId});
     return response.status(200).json({ favourite : favourite , status: true });
 }
 
-export const romoveFavourite = async (request,response,next)=>{
+export const removeFavourite = async (request,response,next)=>{
     let record= await Favourite.destroy({raw:true,
         where:{
             restaurantId:request.params.resId,
-            customerId:1
+            customerId:request.params.cusId
         }
     })
     if(record)
