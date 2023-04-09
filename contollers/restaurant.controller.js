@@ -54,6 +54,7 @@ export const signUp = async (request,response)=>{
     }
 }
 
+
 export const signUpPage = (request,response)=>{
     response.render("addRestaurant.ejs");
 }

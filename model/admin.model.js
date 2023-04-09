@@ -1,7 +1,6 @@
 import { DataTypes } from "sequelize";
 import sequelize from "./dgconfig.js";
 
-
 const Admin = sequelize.define("admin",{
     email:{
         type:DataTypes.STRING,
