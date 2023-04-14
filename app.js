@@ -7,6 +7,7 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import nodemailer from 'nodemailer';
 import CustomerRouter from "./routes/customer.route.js"
+import bookingRouter from './routes/booking.route.js';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use("/restaurant",restRouter);
 app.use("/admin",adminRouter);
 app.use("/plan",PlanRouter);
 app.use("/customer",CustomerRouter);
+app.use("/booking",bookingRouter);
 const publicPath = path.join(path.dirname(fileURLToPath(import.meta.url)),"public");
 app.use(express.static(publicPath));
 

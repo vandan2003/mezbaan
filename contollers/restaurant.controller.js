@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 import sequelize from "../model/dgconfig.js";
 import { sendOtp } from "./mailService.js";
 import jwt from "jsonwebtoken";
+import { Op } from "sequelize";
 
 export const signUp = async (request,response)=>{
     console.log(request.body)
@@ -348,3 +349,23 @@ export const rate = async (request,response)=>{
         return response.status(500).json({status:false,err});
     }
 } 
+
+
+export const searchRest = (request,response)=>{
+   Restaurant.findAll({
+    where:{
+        [Op.or]:{
+            name:{[Op.substring]:request.params.key},
+            description:{[Op.substring]:request.params.key},
+            address:{[Op.substring]:request.params.key}
+        }
+    }
+   })
+   .then(res=>{
+        return response.status(200).json({status:true,res});
+   })
+   .catch(err=>{
+        console.log(err);
+        return response.staus(500).json({status:false,err:"Internal Server Error"})
+   })
+}

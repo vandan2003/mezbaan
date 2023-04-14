@@ -1,5 +1,5 @@
 import express from "express";
-import { signUp  ,signUpPage ,signIn, list , block ,deny , verify ,addImage, addMenu, profile ,changePassword, changePasswordPage, rate, addFacilities, addCuisines, removeFacility, removeCuisine, removeImage, removeMenu} from "../contollers/restaurant.controller.js";
+import { signUp  ,signUpPage ,signIn, list , block ,deny , verify ,addImage, addMenu, profile ,changePassword, changePasswordPage, rate, addFacilities, addCuisines, removeFacility, removeCuisine, removeImage, removeMenu, searchRest} from "../contollers/restaurant.controller.js";
 import { body } from "express-validator";
 import multer from "multer";
 import { verifyRestToken } from "../middlewares/restaurantToken.js";
@@ -70,6 +70,6 @@ restRouter.get("/remove-image/:id",verifyRestToken,removeImage);
 
 restRouter.get("/remove-menu/:id",verifyRestToken,removeMenu);
 
-
+restRouter.get("/search/:key",searchRest);
 
 export default restRouter;
