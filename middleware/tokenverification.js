@@ -1,11 +1,12 @@
 import jwt from "jsonwebtoken";
 export const verifyToken = (request,response,next)=>{
   let token = request.headers.authorization;
+  console.log(token);
   try{
-    if(!token)
+    if(!token){
      throw new Error();
-    token = token.split(" ")[1]; 
-    jwt.verify(token,"fdfxvcvnreorevvvcrerer");
+    }
+    jwt.verify(token,"mvncvbmbmvb,vbbv,bbbbbbbbcnn");
     next();
   }
   catch(err){

@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize";
+import config from "../config/index.js";
 
-const sequelize = new Sequelize("Mezbaan","root","29022004@mummy",{
+const sequelize = new Sequelize("test",config.DATABASE_USERNAME,config.DATABASE_PASSWORD,{
     host:'localhost',
     dialect:"mysql"
 });

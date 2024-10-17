@@ -7,6 +7,8 @@ import path from "path";
 import { fileURLToPath } from 'url';
 import nodemailer from 'nodemailer';
 import CustomerRouter from "./routes/customer.route.js"
+import config from "./config/index.js";
+
 
 const app = express();
 
@@ -23,6 +25,7 @@ app.use(express.static(publicPath));
 
 
 
-app.listen(7080,()=>{
+app.listen(config.PORT,()=>{
     console.log("Mezbaan Server Started . . .");
 });
+
